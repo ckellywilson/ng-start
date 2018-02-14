@@ -35,7 +35,7 @@
                             <img *ngIf='showImage' [src]=product.imageUrl [title]=product.productName [style.width.px]=imageWidth [style.margin.px]=imageMargin>
                         </td>
                         <td>{{ product.productName }}</td>
-                        <td>{{ product.productCode | lowercase }}</td>
+                        <td>{{ product.productCode | convertToSpaces:'-' | lowercase }}</td>
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.description }}</td>
                         <td>{{ product.price | currency:'USD' }}</td>
