@@ -2,6 +2,7 @@ import { IProduct } from './product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
@@ -14,6 +15,7 @@ export class ProductService {
   getProducts(): Observable<IProduct[]> {
     return this._httpClient
       .get<IProduct[]>(this._productUrl)
-      .do(data => console.log(JSON.stringify(data)));
+      .do(data => console.log('Data: ' + JSON.stringify(data)))
+      .catch(err => Observable.throw(err.message));
   }
 }
